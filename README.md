@@ -387,8 +387,6 @@ If you use this project or dataset in your research, please cite the following w
 
 ## License
 
-Now the GitHub-style license section:
-
 ```markdown
 
 This project is licensed under the MIT License.
