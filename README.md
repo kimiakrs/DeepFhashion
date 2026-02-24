@@ -5,6 +5,16 @@ The model leverages a Vision Transformer (ViT-Base/16) backbone, pretrained on l
 to learn discriminative visual representations of clothing categories. The system processes images as fixed-size patches, applies multi-head self-attention 
 to capture global contextual relationships, and outputs multi-class predictions across selected fashion categories.
 
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)](https://pytorch.org/)
+[![Architecture](https://img.shields.io/badge/Architecture-ViT--Base%2F16-purple.svg)](#)
+[![Computer Vision](https://img.shields.io/badge/Field-Computer%20Vision-blue.svg)](#)
+[![timm](https://img.shields.io/badge/Library-timm-green.svg)](https://github.com/huggingface/pytorch-image-models)
+[![Environment](https://img.shields.io/badge/GoogleColab-20BEFF.svg)](https://colab.research.google.com/drive/1N_n03jezm0-DfEJPdfZX6DK2ELqb7v25?usp=sharing)
+[![Dataset](https://img.shields.io/badge/Dataset-DeepFashion-darkgreen.svg)](https://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html)
+[![Task](https://img.shields.io/badge/Task-Image%20Classification-red.svg)](#)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 <p align="center">
 <img src="DeepFashion-Figures/Figures/FashionImages-Outcome/15Categories.png" alt="Fashion Classification" width="800">
 
@@ -20,16 +30,6 @@ Noisy backgrounds
 Mislabeling in real-world datasets
 
 Overfitting on high-resolution fashion images
-
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)](https://pytorch.org/)
-[![Architecture](https://img.shields.io/badge/Architecture-ViT--Base%2F16-purple.svg)](#)
-[![Computer Vision](https://img.shields.io/badge/Field-Computer%20Vision-blue.svg)](#)
-[![timm](https://img.shields.io/badge/Library-timm-green.svg)](https://github.com/huggingface/pytorch-image-models)
-[![Environment](https://img.shields.io/badge/GoogleColab-20BEFF.svg)](https://colab.research.google.com/drive/1N_n03jezm0-DfEJPdfZX6DK2ELqb7v25?usp=sharing)
-[![Dataset](https://img.shields.io/badge/Dataset-DeepFashion-darkgreen.svg)](https://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html)
-[![Task](https://img.shields.io/badge/Task-Image%20Classification-red.svg)](#)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **[View on Google Colab](https://colab.research.google.com/drive/1N_n03jezm0-DfEJPdfZX6DK2ELqb7v25?usp=sharing)**
 
