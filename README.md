@@ -23,10 +23,12 @@ Overfitting on high-resolution fashion images
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)](https://pytorch.org/)
-[![Vision Transformer](https://img.shields.io/badge/Model-ViT--Base/16-purple.svg)](#)
+[![Architecture](https://img.shields.io/badge/Architecture-ViT--Base%2F16-purple.svg)](#)
 [![Computer Vision](https://img.shields.io/badge/Field-Computer%20Vision-blue.svg)](#)
+[![timm](https://img.shields.io/badge/Library-timm-green.svg)](https://github.com/huggingface/pytorch-image-models)
 [![Environment](https://img.shields.io/badge/GoogleColab-20BEFF.svg)](https://colab.research.google.com/drive/1N_n03jezm0-DfEJPdfZX6DK2ELqb7v25?usp=sharing)
 [![Dataset](https://img.shields.io/badge/Dataset-DeepFashion-darkgreen.svg)](https://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html)
+[![Task](https://img.shields.io/badge/Task-Image%20Classification-red.svg)](#)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **[View on Google Colab](https://colab.research.google.com/drive/1N_n03jezm0-DfEJPdfZX6DK2ELqb7v25?usp=sharing)**
@@ -157,7 +159,6 @@ Weak classes were mainly affected by visual similarity and dataset mislabeling.
 
 This project is based on the **DeepFashion – Category & Attribute Prediction Benchmark** dataset.
 
----
 
 ### Raw Dataset (Official Source)
 
@@ -167,40 +168,36 @@ If you want the original dataset with full annotations:
 
 The original dataset contains:
 
-- 289,222 images
+- 800,000 images
 - 50 clothing categories
 - Bounding box annotations
 - Attribute prediction benchmark
 
 You must manually download and extract it from the official website.
 
----
-
 ### Preprocessed Dataset (Used in This Project)
 
 For reproducibility and faster setup, we provide a preprocessed version:
 
-🔗 https://drive.google.com/drive/folders/1BI4L2gByICU4Ewozv2driqdMkijq33Rc?usp=sharing
+🔗 https://drive.google.com/drive/folders/1BI4L2gByICU4Ewozv2driqdMkijq33Rc
 
----
 
 ### Google Drive Structure
 
 After downloading, your Google Drive should look like this:
-
+```
 PatternRecognition-ViT/
 │
-├── Image/                     # Raw images
-├── Annotation/                # Annotation text files
-├── Splits/                    # Train/Val/Test split files
-├── saved_model/               # Saved model checkpoints
-├── Figures+Tables+Workflow/   # Thesis figures & workflow diagrams
+├── Image/                     # DeepFashion image dataset
+├── Annotation/                # Category and attribute annotations
+├── Splits/                    # Predefined train/val/test splits
+├── saved_model/               # Fine-tuned ViT model checkpoints
+├── Figures+Tables+Workflow/   # Experimental figures and workflow diagrams
 │
-├── DeepFashion.ipynb          # Main training notebook
-├── Tables+Figures_ViT.ipynb
-└── SS25-PTR-Overleaf.pdf
-
----
+├── DeepFashion.ipynb          # ViT training and evaluation pipeline
+├── Tables+Figures_ViT.ipynb   # Performance analysis and visualizations
+└── SS25-PTR-Overleaf.pdf      # Final  documentation
+```
 
 ### Selected Dataset Configuration
 
@@ -230,8 +227,6 @@ The project follows a structured end-to-end workflow from raw dataset to perform
 - Load labels from `Annotation/`
 - Apply label encoding
 
----
-
 ### Data Preparation
 
 - Select 15 categories (≥ 3,000 images each)
@@ -247,7 +242,6 @@ The project follows a structured end-to-end workflow from raw dataset to perform
 
 Split files are stored inside `Splits/`.
 
----
 
 ### Data Augmentation & Preprocessing
 
@@ -269,7 +263,6 @@ Three DataLoaders are created:
 
 Batch size: 16
 
----
 
 ### Model Architecture (Vision Transformer)
 
@@ -287,39 +280,38 @@ Model used:
 
 `vit_base_patch16_224` (timm library)
 
----
 
-### Training Phase
+### Training Configuration
 
-Configuration:
-
-- Loss Function: CrossEntropyLoss
-- Optimizer: AdamW (lr = 4e-5, weight_decay = 1e-4)
-- Drop rate: 0.1–0.2
-- Scheduler: Cosine Annealing
-- Early Stopping: patience = 5
-- Maximum Epochs: 15
-- Batch size: 16
+| Component         | Setting                                  |
+|------------------|------------------------------------------|
+| Loss Function     | CrossEntropyLoss                         |
+| Optimizer         | AdamW (lr = 4e-5, weight_decay = 1e-4)   |
+| Drop Rate         | 0.1 – 0.2                                |
+| Scheduler         | Cosine Annealing                         |
+| Early Stopping    | Patience = 5                             |
+| Maximum Epochs    | 15                                       |
+| Batch Size        | 16                                       |
 
 During each epoch:
 
-- Forward pass
-- Loss computation
-- Backpropagation
-- Validation evaluation
-- Checkpoint saving (best validation loss)
+* Forward pass
+* Loss computation
+* Backpropagation
+* Validation evaluation
+* Checkpoint saving (best validation loss)
 
-Early stopping was triggered at epoch 8 due to overfitting.
+**Early stopping was triggered at epoch 8 due to overfitting.**
 
 ### Evaluation Phase
 
 After training:
 
-- Compute Test Accuracy
-- Generate Classification Report
-- Generate Confusion Matrix
-- Compute per-class accuracy
-- Visualize correct & incorrect predictions
+* Compute Test Accuracy
+* Generate Classification Report
+* Generate Confusion Matrix
+* Compute per-class accuracy
+* Visualize correct & incorrect predictions
 
 Final Test Accuracy: **64.9%**
 
@@ -332,6 +324,7 @@ Main sources of misclassification:
 - Mislabeling inside dataset
 - Noisy backgrounds
 
+**All results are saved in this directory [`DeepFashion-Results`](DeepFashion-Fgiures/)**
 
 
 ---
@@ -350,13 +343,12 @@ This project was developed using Python 3.8+ and the following libraries:
 - Pillow >= 10.0.0
 - numpy >= 1.24.0
 
----
 
 ### Install All Dependencies
 
 ```bash
 pip install -r requirements.txt
-
+```
 ---
 
 ## Future Work
@@ -367,10 +359,10 @@ pip install -r requirements.txt
 - [x] Early stopping & checkpointing
 - [x] Confusion matrix & classification reportfeatures)
 - [x] Per-class performance analysis
-- [] Hybrid CNN + Vision Transformer architecture for improved feature extraction
-- [] Stronger background suppression using background segmentation (U²-Net or Mask R-CNN)
-- [] Fashion Similarity Retrieval System
-- [] Per-class performance analysis
+- [ ] Hybrid CNN + Vision Transformer architecture for improved feature extraction
+- [ ] Stronger background suppression using background segmentation (U²-Net or Mask R-CNN)
+- [ ] Fashion Similarity Retrieval System
+- [ ] Per-class performance analysis
 
 ---
 
@@ -389,7 +381,7 @@ If you use this project or dataset in your research, please cite the following w
   month = {June},
   year = {2016}
 }
-
+```
 
 ---
 
@@ -418,3 +410,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
