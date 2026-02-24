@@ -6,7 +6,7 @@ to learn discriminative visual representations of clothing categories. The syste
 to capture global contextual relationships, and outputs multi-class predictions across selected fashion categories.
 
 <p align="center">
-<img src="DeepFashion-Figures/Figures/FashionImages-Outcome/15Categories.png" alt="ASTRA Architecture Diagram" width="800">
+<img src="DeepFashion-Figures/Figures/FashionImages-Outcome/15Categories.png" alt="Fashion Classification" width="800">
 
 <br>
 </p>
@@ -116,7 +116,7 @@ Each image is split into **16×16 patches**, producing **197 tokens (196 patches
 
 <p align="center">
 <a href="DeepFashion-Figures/Diagrams/ModelArchitecture.pdf">
-<img src="DeepFashion-Figures/ViTarch.png" alt="ASTRA Architecture Diagram" width="800">
+<img src="DeepFashion-Figures/ViTarch.png" alt="DeepFashion Architecture" width="800">
 
 </a>
 <br>
