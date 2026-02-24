@@ -1,6 +1,15 @@
 # Vision Transformer for Fashion Image Classification
 
-A deep learning system that classifies fashion categories using a Vision Transformer (ViT-Base/16) architecture on the DeepFashion dataset.
+A deep learning–based image classification system designed to recognize and categorize fashion items using a transformer-based architecture. 
+The model leverages a Vision Transformer (ViT-Base/16) backbone, pretrained on large-scale image datasets and fine-tuned on the DeepFashion dataset 
+to learn discriminative visual representations of clothing categories. The system processes images as fixed-size patches, applies multi-head self-attention 
+to capture global contextual relationships, and outputs multi-class predictions across selected fashion categories.
+
+<p align="center">
+<img src="DeepFashion-Figures/Figures/FashionImages-Outcome/15Categories.png" alt="ASTRA Architecture Diagram" width="800">
+
+<br>
+</p>
 
 This project investigates transformer-based visual modeling for fine-grained clothing recognition while addressing challenges such as:
 
@@ -101,6 +110,17 @@ The objective was to examine how ViT performs on visually similar categories and
 | 6 | Classification Head | Final softmax prediction |
 
 Each image is split into **16×16 patches**, producing **197 tokens (196 patches + CLS)** before entering the transformer encoder.
+
+
+<p align="center">
+<a href="DeepFashion-Figures/Diagrams/ModelArchitecture.pdf">
+<img src="DeepFashion-Figures/ViTarch.png" alt="ASTRA Architecture Diagram" width="800">
+
+</a>
+<br>
+<em>(Click image to view high-resolution PDF)</em>
+</p>
+
 
 
 ---
